@@ -41,8 +41,8 @@ public class TaskService {
         Task task = taskRepository.findById(id)
                 .orElseThrow();
 
-        task.setTitle(title);
-        task.setDescription(description);
+        task.updateTitle(title);
+        task.updateDescription(description);
         return taskRepository.save(task);
     }
 

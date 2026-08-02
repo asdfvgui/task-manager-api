@@ -26,8 +26,8 @@ public class Task {
 
 
     public Task(String title, String description) {
-        this.title = title;
-        this.description = description;
+        updateTitle(title);
+        updateDescription(description);
     }
 
 
@@ -45,11 +45,20 @@ public class Task {
     }
 
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void updateTitle(String title) {
+
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
+
+        this.title = title.trim();
+
     }
-    public void setDescription(String description) {
-        this.description = description;
+
+    public void updateDescription(String description) {
+        this.description = description == null
+                ? ""
+                : description.trim();
     }
 
 
